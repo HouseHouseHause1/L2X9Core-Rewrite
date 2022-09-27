@@ -1,0 +1,28 @@
+name: L2X9Core-rewrite
+version: ${project.version}
+main: org.l2x9.l2x9corerw.L2X9CoreRW
+authors: [ 254n_m ]
+description: Fix sexploits
+commands:
+  say:
+    description: e
+  open:
+    description: e
+  crash:
+    description: e
+  speed:
+    description: e
+  uuid:
+    description: e
+  uptime:
+    description: e
+  aef:
+    description: e
+  discord:
+    description: e
+  world:
+    description: e
+  help:
+    description: e
+  spawn:
+    description: e

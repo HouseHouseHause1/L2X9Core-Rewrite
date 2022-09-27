@@ -1,0 +1,164 @@
+#     /$$        /$$$$$$  /$$   /$$  /$$$$$$           /$$$$$$
+#    | $$       /$$__  $$| $$  / $$ /$$__  $$         /$$__  $$
+#    | $$      |__/  \ $$|  $$/ $$/| $$  \ $$        | $$  \__/  /$$$$$$   /$$$$$$   /$$$$$$
+#    | $$        /$$$$$$/ \  $$$$/ |  $$$$$$$ /$$$$$$| $$       /$$__  $$ /$$__  $$ /$$__  $$
+#    | $$       /$$____/   >$$  $$  \____  $$|______/| $$      | $$  \ $$| $$  \__/| $$$$$$$$
+#    | $$      | $$       /$$/\  $$ /$$  \ $$        | $$    $$| $$  | $$| $$      | $$_____/
+#    | $$$$$$$$| $$$$$$$$| $$  \ $$|  $$$$$$/        |  $$$$$$/|  $$$$$$/| $$      |  $$$$$$$
+#    |________/|________/|__/  |__/ \______/          \______/  \______/ |__/       \_______/
+#     by 254n_m
+#If you set Crash to true on any of these modules it will crash the players game instead of sending them a message
+#If you leave the message as a blank string for any of these modules it will not send a message at all
+Odysseus:
+  #This is used for all logging and messages that will be sent to players. Use & for colours
+  Prefix: '&7<&r&6&lOdys&r&eseus&r&7>&r '
+  #If this is true there will be no console output from the plugin
+  NoConsoleOutput: false
+  #Broadcast any console logging from Odysseus to ops
+  BroadcastOp: true
+  #World name for file deleter and other stuff
+  WorldName: 'world'
+#Config options for all the commands
+Command:
+  DiscordCommand:
+    DiscordLink: '&3Join us on discord at&r&a https://www.l2x9.org/discord'
+  HelpCommand:
+    HelpCommand-Enabled: true
+    HelpList:
+      - "&m&6-----------------------------------------------------"
+      - "&3/ignore <name> to ignore a player."
+      - "&3/ignorelist to list ignored players."
+      - "&3/r <message> to reply to the last person that messaged you."
+      - "&3/l <message> to message the last person that you messaged."
+      - "&3/w <name> <message> OR /msg <name> <message> to pm a player."
+      - "&3/toggleconnectionmsgs to toggle join and leave messages."
+      - "&3/togglechat to toggle the default chat."
+      - "&3/toggledeathmsg to toggle all death messages."
+      - "&3/kill to kill yourself."
+      - "&3/discord to join the <ServerName> discord."
+      - "&m&6-----------------------------------------------------"
+  SayCommand:
+    Format: '{prefix} {message}'
+#Checks for the built in AntiIllegal
+AntiIllegal:
+  Block-Place-Enabled: true
+  ChunkLoad-Enabled: false
+  HopperTransfer-Enabled: true
+  InventoryClose-Enabled: true
+  InventoryOpen-Enabled: true
+  ItemPickup-Enabled: true
+  PlayerHotbarMove-Enabled: true
+  Delete-Stacked-Items: true
+  #A list of all items can be found here https://helpch.at/docs/1.12.2/org/bukkit/Material.html
+  Illegal-Items-List:
+    - 'bedrock'
+    - 'command_repeating'
+    - 'command_minecart'
+    - 'command_chain'
+    - 'command'
+    - 'ender_portal_frame'
+    - 'knowledge_book'
+    - 'mob_spawner'
+    - 'structure_block'
+    - 'structure_void'
+    - 'barrier'
+    - 'monster_egg'
+  #Max amount of any entity listed here per chunk
+  #The formatting for this is <entity>:<amount> (i.e pig:20)
+EntityWorker:
+  Worker-Enabled: true
+  TypePairs:
+    - 'ender_crystal:20'
+    - 'armor_stand:15'
+    - 'wither:100'
+    - 'falling_block:50'
+    - 'primed_tnt:40'
+    - 'wither_skull:2'
+#Prevent players from banning each other
+AntiBookBan:
+  Module-Enabled: true
+  Message: '&3You have been un-bookbanned'
+#Prevent players from crashing the server by spam opening chests
+AntiChestLag:
+  Module-Enabled: true
+  Crash: false
+  Kick: true
+  MaxOpensPerSecond: 15
+  KickMessage: '&3Please slowdown while opening chests and other containers'
+#Prevent the dispenser shulker crash
+AntiDispenserCrash:
+  Module-Enabled: true
+#Prevent the EndGateWay crash
+AntiEndGatewayCrash:
+  Module-Enabled: true
+  Crash: false
+  Kick: true
+  KickMessage: 'This exploit has been disabled due to an exploit'
+#Prevent players from breaking end portals
+AntiEndPortalGrief:
+  Module-Enabled: true
+  Message: '&3EndPortal griefing has been disabled due to an exploit'
+  Crash: false
+AntiChunkBan:
+  Module-Enabled: true
+  Crash: false
+  Message: '&3ChunkBan has been disabled due to an exploit'
+  MaxTileEntities: 150
+#Remove wither skulls when a chunk is loaded or unloaded. This module might cause lag
+AntiWitherSkull:
+  Module-Enabled: true
+  ChunkLoad: true
+  ChunkUnload: true
+#Prevent players from going above and below the nether
+AntiNetherRoof:
+  Module-Enabled: true
+  TeleportPlayer: true
+  KillPlayer: false
+  Message: '&3The nether roof / bottom is currently disabled due to lag'
+  NetherTop: 127
+  NetherBottom: 0
+  PreventInteractions: true #Prevent all forms of interactions above the roof (i.e BlockPlace, BlockBreak, ChestOpen, and everything else
+#Modifactions to elytra
+ElytraFlyFix:
+  Module-Enabled: true
+  RemoveElytra: true #Remove the players elytra when they are going too fast or in low tps
+  PreventPacketElytra: true
+  MaxSpeed: 3 #Allows travel at 30 bps
+  ElytraDisableTps: 15 # set 0 to disable
+  SpeedMessage: '&3You are going too fast with your elytra'
+  LowTPSMessage: '&3Elytras are currently disabled due to server lag. They should be back shortly'
+#Prevent players from crashing the server with offhand crash
+OffhandCrashFix:
+  Module-Enabled: true
+  Kick: true
+  KickMessage: '&3Please slow down while OffHanding items'
+  Crash: false
+  MaxOffhandSpam: 20
+#Prevent liquids from flowing at low tps (Its not recommended to enable this)
+PreventLiquidFlow:
+  Module-Enabled: false
+  DisableTPS: 10
+  RemoveSource: true
+#Prevent most forms of LagMachine
+AntiLagMachine:
+  Module-Enabled: true
+  DisableTPS: 15
+  MaxRedstoneUpdates: 15 #Max amount of redstone updates per chunk per second (Only in low tps)
+  StrikeLightning: true #Will strike lightning where ever redstone was removed (For dramatics)
+  LogToFile: false
+  BreakMachine: true
+#Prevent players from spamming chat (This also includes commands)
+AntiChatSpam:
+  Module-Enabled: true
+  AllowLinks: false #Ban links from your chat
+  SendFakeMessage: true
+  ChatCoolDown: 2000 #This is measured in milliseconds
+  CheckCommands: true
+  BlacklistedWords: # You can set this to "BlacklistedWords: []" to disable this feature
+    - "discord"
+#This module will fix the skylight lag exploit
+LightLagFix:
+  Module-Enabled: true
+  MaxBlockPlaceSpam: 12
+  KickMessage: ' -> &a[AntiLightLag]&r&3 Yeah sorry lol but LightLag is patched'
+  Crash: false #Crash the game of the player
